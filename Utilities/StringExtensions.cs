@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hyperlinks.Integrations;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -48,7 +49,6 @@ namespace Hyperlinks.Utilities
                 }
 
                 tempUrl = tempUrl.Replace("\"", "").Trim();
-                VCSProxy.SendPluginText("temp: " + tempUrl);
 
                 text = Regex.Replace(text, tempUrl, $"<tell:IIDString:8675:{tempUrl}>{tempUrl}</tell>", RegexOptions.IgnoreCase);
 
