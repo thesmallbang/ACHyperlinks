@@ -48,8 +48,12 @@ namespace Hyperlinks.Utilities
                     tempUrl = text.Substring(index);
                 }
 
-                tempUrl = tempUrl.Replace("\"", "").Trim();
+                if (tempUrl.ToLowerInvariant().Contains("</tell>"))
+                    continue;
 
+                tempUrl = tempUrl.Replace("\"", "").Trim();
+                
+                
                 text = Regex.Replace(text, tempUrl, $"<tell:IIDString:8675:{tempUrl}>{tempUrl}</tell>", RegexOptions.IgnoreCase);
 
             }
